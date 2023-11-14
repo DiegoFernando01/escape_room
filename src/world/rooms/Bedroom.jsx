@@ -23,10 +23,30 @@ const Bedroom = () => {
   const backgroundAudioRef = useRef(new Audio(backgroundSound));
 
   const movementDirection = useRef({ x: 0, z: -1 });
-  const movementSpeed = 0.04;
+  const movementSpeed = 0.042;
   const shakeAmplitude = 0.02;
   const shakeFrequency = 0.015;
   const cameraShakeOffset = useRef(0);
+  const [isColliding, setIsColliding] = useState(false);
+
+  const walls = [
+    { position: { x: -2.89409022321951664, y: 6, z: -14.909690848615181 }, width: 10, height: 5, depth: 0.8 },
+    { position: { x: 4.420275758873161 , y: 6 , z: -12.57006765888377 }, width: 3, height: 5, depth: 0.8 },
+    { position: { x: 2.9226310671761837  , y: 6 , z: -10 }, width: 3, height: 5, depth: 1.5 },
+    { position: { x: 2 , y: 5 , z: -8 }, width: 3, height: 5, depth: 0.8},
+    { position: { x: 3 , y: 6 , z: -7 }, width: 3, height: 5, depth: 0.8},
+    { position: { x: 6 , y: 6 , z: -4 }, width: 5, height: 20, depth: 0.8},
+    { position: { x: 6 , y: 4 , z: -2 }, width: 5, height: 20, depth: 0.8},
+    { position: { x: 7 , y: 4 , z: 3 }, width: 5, height: 20, depth: 0.8},
+    { position: { x: 6 , y: 6 , z: 5 }, width: 10, height: 20, depth: 0.8},
+    { position: { x: 6 , y: 5 , z: 3 }, width: 10, height: 20, depth: 1},
+    { position: { x: 6 , y: 6 , z: 6 }, width: 10, height: 20, depth: 1},
+    { position: { x: 1 , y: 5 , z: 0 }, width: 10, height: 20, depth: 1},
+    { position: { x: -5 , y: 5 , z: 1 }, width: 1, height: 20, depth: 1},
+    { position: { x: -6 , y: 5 , z: -1 }, width: 5, height: 1, depth: 1},
+    { position: { x: -8 , y: 5 , z: -2 }, width: 3, height: 10, depth: 1},
+  
+  ];
 
   const [elapsedTime, setElapsedTime] = useState(0); // Nuevo estado para el tiempo transcurrido.
 
@@ -63,7 +83,7 @@ const Bedroom = () => {
       cameraShakeOffset.current =
         Math.sin(performance.now() * shakeFrequency) * shakeAmplitude;
       if (cameraRef.current && isCameraShaking.current) {
-        cameraRef.current.position.y = 5 + cameraShakeOffset.current;
+        cameraRef.current.position.y = 6 + cameraShakeOffset.current;
       }
     }
   };
@@ -72,9 +92,12 @@ const Bedroom = () => {
 
   useEffect(() => {
     // Configurar la posición y orientación inicial de la cámara.
-    camera.position.set(1, 5, -14);
+    camera.position.set(0, 6, -14);
     camera.lookAt(2, 2, 2);
     cameraRef.current = camera;
+    cameraRef.current.rotation.x = 0;
+    cameraRef.current.rotation.y = 3.144;
+    cameraRef.current.rotation.z = 0;
   }, [camera]);
 
   // Nuevo: Control de reproducción del sonido de fondo al inicio.
@@ -103,6 +126,8 @@ const Bedroom = () => {
       );
     };
   }, [isBackgroundSoundStarted]);
+
+
 
   // Nueva función para iniciar el sonido de fondo al dar el primer paso.
   const startBackgroundSound = () => {
@@ -145,14 +170,25 @@ const Bedroom = () => {
 
       const moveForward = () => {
         if (isMovingForward.current && cameraRef.current) {
-          cameraRef.current.position.x += movementDirection.current.x * movementSpeed; // Cambiar el signo
-          cameraRef.current.position.z += movementDirection.current.z * movementSpeed; // Cambiar el signo
-          requestAnimationFrame(moveForward);
-          audioRef.current.play();
-          // Nuevo: Iniciar el sonido de fondo al dar el primer paso.
-          startBackgroundSound();
+          // Calcula la nueva posición sin realizar la actualización directa
+          const newX = cameraRef.current.position.x + movementDirection.current.x * movementSpeed;
+          const newZ = cameraRef.current.position.z - movementDirection.current.z * movementSpeed;
+      
+          checkCollision(newX, newZ); // Verifica colisiones antes de mover la cámara
+      
+          // Solo actualiza la posición si no hay colisión
+          if (!isColliding) {
+            cameraRef.current.position.x = newX;
+            cameraRef.current.position.z = newZ;
+            requestAnimationFrame(moveForward);
+            audioRef.current.play();
+            // Nuevo: Iniciar el sonido de fondo al dar el primer paso.
+            startBackgroundSound();
+          }
         }
       };
+
+
 
       moveForward();
 
@@ -167,15 +203,42 @@ const Bedroom = () => {
     }
   };
 
+
+  const checkCollision = () => {
+    for (const wall of walls) {
+      if (
+        cameraRef.current.position.x > wall.position.x - wall.width / 2 &&
+        cameraRef.current.position.x < wall.position.x + wall.width / 2 &&
+        cameraRef.current.position.z > wall.position.z - wall.depth / 2 &&
+        cameraRef.current.position.z < wall.position.z + wall.depth / 2
+      ) {
+        // Solo ajusta la posición si no estaba en estado de colisión previamente
+        if (!isColliding) {
+          // Colisión detectada, ajusta la posición de la cámara
+          // Puedes detener completamente el movimiento o ajustar la posición según tus necesidades
+          // En este ejemplo, detenemos el movimiento en esa dirección
+          movementDirection.current = { x: 0, z: 0 };
+          setIsColliding(true);
+        }
+        return; // Sale de la función para evitar ajustes múltiples en un solo marco
+      }
+    }
+
+    // Si no hay colisión, restablece el estado de colisión
+  setIsColliding(false);
+};
+
+
   const handleMouseUp = (e) => {
+    console.log("handleMouseUp se llamó",e);
     isDragging.current = false;
     isRotatingCamera.current = false;
     prevMouseX.current = null;
-
+  
     // Detener el movimiento cuando se suelta el clic izquierdo o derecho
     isMovingForward.current = false;
     setIsRightClickPressed(false);
-
+  
     if (e.button === 0) {
       // Si se soltó el clic izquierdo, reproducir wood-end y detener wood
       audioRef.current.pause();
@@ -183,8 +246,17 @@ const Bedroom = () => {
       audioEndRef.current.play();
       setIsLeftClickPressed(false);
       setIsLeftClickReleased(true);
+      // Agrega el console.log para ver la posición de la cámara
+      console.log(
+        "Posición de la cámara:",
+        cameraRef.current.position.x,
+        cameraRef.current.position.y,
+        cameraRef.current.position.z
+      );
     }
   };
+  
+  
 
   useEffect(() => {
     stop();
