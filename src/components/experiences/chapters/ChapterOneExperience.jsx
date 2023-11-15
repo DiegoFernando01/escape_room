@@ -1,4 +1,3 @@
-import React from "react";
 import Bedroom from "../../../world/rooms/Bedroom";
 import Bed from "../../../world/elements/Bed";
 import Lights from "../../../world/staging/Lights";

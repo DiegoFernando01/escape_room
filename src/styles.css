@@ -1,3 +1,5 @@
+@import "./styles/normalize.css";
+
 html, body, #root {
   position: fixed;
   top: 0;

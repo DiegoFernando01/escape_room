@@ -8,8 +8,8 @@ const ProjectRoutes = () => {
     <Routes>
       <Route path="/">
         <Route index element={<ChapterOne />} />
-        <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/chapter_one" element={<ChapterOne />} />
       </Route>
     </Routes>

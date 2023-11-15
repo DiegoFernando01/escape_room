@@ -1,4 +1,4 @@
-form {
+.form {
   background: black;
   color: white;
   display: flex;
@@ -17,7 +17,7 @@ form {
   padding-bottom: 1rem;
 }
 
-.header-text {
+.header_text {
   margin: 0;
   color: hotpink;
   font-size: 3rem;
@@ -31,22 +31,22 @@ form {
   border-radius: 0.1rem;
 }
 
-.input {
+.inputs {
   padding-bottom: 0.5rem;
 }
 
-label {
+.label {
   display: block;
   padding: 0.25rem 0;
 }
 
-span {
+.span {
   display: block;
   color: red;
   font-size: smaller;
 }
 
-input {
+.input {
   display: block;
   height: 2rem;
   border: none;
@@ -55,7 +55,7 @@ input {
   margin-bottom: 0.3rem;
 }
 
-button {
+.button {
   width: 6rem;
   height: 2rem;
   display: flex;
@@ -68,7 +68,7 @@ button {
   border-radius: 0.5rem;
 }
 
-pre {
+.pre {
   display: flex;
   align-items: center;
 }

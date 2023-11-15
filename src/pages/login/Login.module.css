@@ -1,0 +1,60 @@
+.example {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 1em rgba(119, 0, 255, 0.667));
+}
+
+.title {  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1rem;
+  padding-top: 3rem;
+}
+
+.title_text {
+  margin: 0;
+  color: white;
+}
+
+.underline {
+  background-color: white;
+  width: 16rem;
+  height: 0.25rem;
+  border-radius: 0.1rem;
+}
+
+.card {
+  padding: 2em;
+}
+
+.button {
+  width: 6rem;
+  height: 2rem;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  background-color: rgb(119, 0, 255);
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.button:hover {
+  background-color: rgb(255, 0, 170);
+  filter: drop-shadow(0 0 1em rgba(119, 0, 255, 0.667));
+}
