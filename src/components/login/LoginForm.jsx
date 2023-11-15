@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { login } from "../../api/api";
-import "./LoginForm.css";
+import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
   const {
@@ -33,16 +33,17 @@ const LoginForm = () => {
   });
 
   return (
-    <form onSubmit={onSubmit}>
-      <div className="header">
-        <h1 className="header-text">Login</h1>
-        <div className="underline"></div>
+    <form className={styles.form} onSubmit={onSubmit}>
+      <div className={styles.header}>
+        <h1 className={styles.header_text}>Login</h1>
+        <div className={styles.underline}></div>
       </div>
 
-      <div className="input">
-        <label>
+      <div className={styles.inputs}>
+        <label className={styles.label}>
           Email:
           <input
+            className={styles.input}
             type="email"
             name="email"
             placeholder="Email"
@@ -61,10 +62,11 @@ const LoginForm = () => {
         {errors.correo && <span>{errors.correo.message}</span>}
       </div>
 
-      <div className="input">
-        <label>
+      <div className={styles.input}>
+        <label className={styles.label}>
           Password:
           <input
+            className={styles.input}
             type="password"
             name="password"
             placeholder="Password"
@@ -107,9 +109,11 @@ const LoginForm = () => {
         )}
       </div> */}
 
-      <button type="submit">Send</button>
+      <button className={styles.button} type="submit">
+        Send
+      </button>
 
-      {/* <pre>{JSON.stringify(watch(), null, 2)}</pre> */}
+      {/* <pre className={styles.pre}>{JSON.stringify(watch(), null, 2)}</pre> */}
     </form>
   );
 };

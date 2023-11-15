@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { signup } from "../../api/api";
-import "./SignUpForm.css";
+import styles from "./SignUpForm.module.css";
 
 const SignUpForm = () => {
   const {
@@ -34,16 +34,17 @@ const SignUpForm = () => {
   });
 
   return (
-    <form onSubmit={onSubmit}>
-      <div className="header">
-        <h1 className="header-text">Sign Up</h1>
-        <div className="underline"></div>
+    <form className={styles.form} onSubmit={onSubmit}>
+      <div className={styles.header}>
+        <h1 className={styles.header_text}>Sign Up</h1>
+        <div className={styles.underline}></div>
       </div>
 
-      <div className="input">
-        <label>
+      <div className={styles.inputs}>
+        <label className={styles.label}>
           Username:
           <input
+            className={styles.input}
             type="text"
             name="username"
             placeholder="Username"
@@ -55,13 +56,16 @@ const SignUpForm = () => {
             })}
           />
         </label>
-        {errors.nombre?.type === "required" && <span>Username required</span>}
+        {errors.nombre?.type === "required" && (
+          <span className={styles.span}>Username required</span>
+        )}
       </div>
 
-      <div className="input">
-        <label>
+      <div className={styles.input}>
+        <label className={styles.label}>
           Email:
           <input
+            className={styles.input}
             type="email"
             name="email"
             placeholder="Email"
@@ -77,13 +81,16 @@ const SignUpForm = () => {
             })}
           />
         </label>
-        {errors.correo && <span>{errors.correo.message}</span>}
+        {errors.correo && (
+          <span className={styles.span}>{errors.correo.message}</span>
+        )}
       </div>
 
-      <div className="input">
-        <label>
+      <div className={styles.input}>
+        <label className={styles.label}>
           Password:
           <input
+            className={styles.input}
             type="password"
             name="password"
             placeholder="Password"
@@ -99,7 +106,9 @@ const SignUpForm = () => {
             })}
           />
         </label>
-        {errors.password && <span>{errors.password.message}</span>}
+        {errors.password && (
+          <span className={styles.span}>{errors.password.message}</span>
+        )}
       </div>
 
       {/* <div className="input">
@@ -126,9 +135,11 @@ const SignUpForm = () => {
         )}
       </div> */}
 
-      <button type="submit">Send</button>
+      <button className="button" type="submit">
+        Send
+      </button>
 
-      {/* <pre>{JSON.stringify(watch(), null, 2)}</pre> */}
+      {/* <pre className={styles.pre}>{JSON.stringify(watch(), null, 2)}</pre> */}
     </form>
   );
 };
