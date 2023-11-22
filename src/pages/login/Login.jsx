@@ -10,17 +10,21 @@ const Login = () => {
 
   return (
     <div className={styles.example}>
-      <div>
-        <img src={ArtonLogo} className={styles.logo} alt="Arton Logo" />
-      </div>
-      <div className={styles.title}>
-        <h1 className={styles.title_text}>Login with Gmail</h1>
-        <div className={styles.underline}></div>
-      </div>
-      <div className={styles.card}>
-        <button className={styles.button} onClick={login}>
-          Login
-        </button>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <div className={styles.title}>
+            <h1 className={styles.title_text}>Inicia sesión acontinuación para jugar.</h1>
+            <div className={styles.underline}></div>
+          </div>
+          <div className={styles.card}>
+            <button className={styles.button} onClick={login}>
+              Login
+            </button>
+          </div>
+        </div>
+        <div>
+          <img src={ArtonLogo} className={styles.logo} alt="Arton Logo" />
+        </div>
       </div>
     </div>
   );
