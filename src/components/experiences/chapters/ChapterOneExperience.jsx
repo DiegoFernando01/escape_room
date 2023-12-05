@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import Bed from "../../../world/elements/Bed";
-import Chair from "../../../world/elements/chair";
+import Chair from "../../../world/elements/Chair";
 import Bucket from "../../../world/elements/Bucket";
 import Desktop from "../../../world/elements/Desktop";
 import Library from "../../../world/elements/Library";
