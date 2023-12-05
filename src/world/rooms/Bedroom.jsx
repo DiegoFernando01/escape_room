@@ -170,21 +170,12 @@ const Bedroom = () => {
 
       const moveForward = () => {
         if (isMovingForward.current && cameraRef.current) {
-          // Calcula la nueva posición sin realizar la actualización directa
-          const newX = cameraRef.current.position.x + movementDirection.current.x * movementSpeed;
-          const newZ = cameraRef.current.position.z - movementDirection.current.z * movementSpeed;
-      
-          checkCollision(newX, newZ); // Verifica colisiones antes de mover la cámara
-      
-          // Solo actualiza la posición si no hay colisión
-          if (!isColliding) {
-            cameraRef.current.position.x = newX;
-            cameraRef.current.position.z = newZ;
-            requestAnimationFrame(moveForward);
-            audioRef.current.play();
-            // Nuevo: Iniciar el sonido de fondo al dar el primer paso.
-            startBackgroundSound();
-          }
+          cameraRef.current.position.x += movementDirection.current.x * movementSpeed; // Cambiar el signo
+          cameraRef.current.position.z -= movementDirection.current.z * movementSpeed; // Cambiar el signo
+          requestAnimationFrame(moveForward);
+          audioRef.current.play();
+          // Nuevo: Iniciar el sonido de fondo al dar el primer paso.
+          startBackgroundSound();
         }
       };
 
