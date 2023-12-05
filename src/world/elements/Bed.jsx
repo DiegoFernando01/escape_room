@@ -1,197 +1,51 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Bed (props) {
+const Bed = (props) => {
   const { nodes, materials } = useGLTF("/assets/models/bed/bed.glb");
   return (
     <group {...props} dispose={null}>
-      <group scale={0.03}>
-        <group position={[-1.058, -1.105, 0]} scale={100}>
-        <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.blanket_blanket_0.geometry}
-            material={materials.blanket}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.blanket_blanket_0001.geometry}
-            material={materials.blanket}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.blanket_blanket_0002.geometry}
-            material={materials.blanket}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.blanket_blanket_0003.geometry}
-            material={materials.blanket}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.blanket_blanket_0004.geometry}
-            material={materials.blanket}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.blanket_blanket_0005.geometry}
-            material={materials.blanket}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.blanket_blanket_0006.geometry}
-            material={materials.blanket}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.blanket_blanket_0007.geometry}
-            material={materials.blanket}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.blanket_blanket_0008.geometry}
-            material={materials.blanket}
-          />
-        </group>
-        <group scale={100}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_bottom_0.geometry}
-            material={materials.cover_bottom}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_bottom_0001.geometry}
-            material={materials.cover_bottom}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_bottom_0002.geometry}
-            material={materials.cover_bottom}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_bottom_0003.geometry}
-            material={materials.cover_bottom}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_bottom_0004.geometry}
-            material={materials.cover_bottom}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_bottom_0005.geometry}
-            material={materials.cover_bottom}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_bottom_0006.geometry}
-            material={materials.cover_bottom}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_top_0.geometry}
-            material={materials.cover_top}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_top_0001.geometry}
-            material={materials.cover_top}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_top_0002.geometry}
-            material={materials.cover_top}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_top_0003.geometry}
-            material={materials.cover_top}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_top_0004.geometry}
-            material={materials.cover_top}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_top_0005.geometry}
-            material={materials.cover_top}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cover_cover_top_0006.geometry}
-            material={materials.cover_top}
-          />
-        </group>
-        <group position={[-1.058, -1.105, 0]} scale={100}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cushions_cover_bottom_0.geometry}
-            material={materials.cover_bottom}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.cushions_cushions_0.geometry}
-            material={materials.cushions}
-          />
-        </group>
+    <group rotation={[-Math.PI / 2, 0, 1.68]} scale={0.033}>
+      <group position={[-160.962, -185.359, -10]}>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.bed_wood_0.geometry}
-          material={materials.wood}
-          scale={100}
+          geometry={nodes.Object_3.geometry}
+          material={materials.fabric}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.mattress_mattress_0.geometry}
-          material={materials.mattress}
-          scale={100}
+          geometry={nodes.Object_4.geometry}
+          material={materials.fabric}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.pillows_pillows_0.geometry}
-          material={materials.pillows}
-          scale={100}
+          geometry={nodes.Object_5.geometry}
+          material={materials.fabric}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.sheet_sheet_0.geometry}
-          material={materials.sheet}
-          scale={100}
+          geometry={nodes.Object_6.geometry}
+          material={materials.fabric}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_7.geometry}
+          material={materials.Wood_polish}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_8.geometry}
+          material={materials.Wood_polish_black}
         />
       </group>
     </group>
+  </group>
   );
 }
 export default Bed;
