@@ -12,13 +12,9 @@ const Login = () => {
     <div className={styles.example}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.title}>
-            <h1 className={styles.title_text}>Inicia sesión acontinuación para jugar.</h1>
-            <div className={styles.underline}></div>
-          </div>
           <div className={styles.card}>
             <button className={styles.button} onClick={login}>
-              Login
+              Iniciar Sesión
             </button>
           </div>
         </div>

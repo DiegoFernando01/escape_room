@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import ChapterOne from "../pages/chapters/ChapterOne";
 import SignUp from "../pages/signup/SignUp";
 import Login from "../pages/login/Login";
-import Introduction from "../pages/introduction/IntroductionExp";
 
 const ProjectRoutes = () => {
   return (
@@ -12,7 +11,6 @@ const ProjectRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/chapter_one" element={<ChapterOne />} />
-        <Route path="/introduction" element={<Introduction />} />
       </Route>
     </Routes>
   );
