@@ -1,23 +1,59 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 
 const Desktop = (props) => {
-    const { nodes, materials } = useGLTF("/assets/models/desktop/desktop.glb");
-    return (
-        <group {...props} dispose={null}>
-        <group scale={0.03} rotation={[0,1.6,0]}>
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.pCube410_Teclado_0.geometry}
-                material={materials.Teclado}
-            />
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.pCube407_Teclado_0.geometry}
-                material={materials.Teclado}
-            />
+  const { nodes, materials } = useGLTF("/assets/models/desktop/desktop.glb");
+  const desktopRef = useRef();
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleDesktopClick = () => {
+    console.log("Escritorio clickeado");
+    playAudio("/assets/sounds/Scenes C2/C2_4.mp3");
+  };
+
+  const handleMouseOver = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovered(false);
+  };
+
+  const playAudio = (audioSrc) => {
+    const audio = new Audio(audioSrc);
+    audio.play();
+  };
+
+  useEffect(() => {
+    const desktopObject = desktopRef.current;
+    if (desktopObject) {
+      desktopObject.children.forEach((child) => {
+        if (child.isMesh) {
+          child.material.emissiveIntensity = isHovered ? 5 : 0;
+        }
+      });
+    }
+  }, [isHovered]);
+
+  return (
+    <group {...props} dispose={null}>
+      <group
+        scale={0.03}
+        rotation={[0, 1.6, 0]}
+        onPointerOver={handleMouseOver}
+        onPointerOut={handleMouseOut}
+        onClick={handleDesktopClick}
+      >
+        {nodes.pCube410_Teclado_0 && (
+          <mesh
+            ref={desktopRef}
+            onClick={handleDesktopClick}
+            castShadow
+            receiveShadow
+            geometry={nodes.pCube410_Teclado_0.geometry}
+            material={materials.Teclado}
+          />
+        )}
             <mesh
                 castShadow
                 receiveShadow
