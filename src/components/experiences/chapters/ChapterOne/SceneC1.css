@@ -1,0 +1,337 @@
+/* SceneC1.css */
+
+.Button1 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 1; 
+}
+
+
+.Button1:hover {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(-48%, -48%);
+    scale: 104%;
+}
+
+.Button1:active {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    scale: 100%;
+}
+
+
+/* SceneC1.css */
+
+.Button2 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    right: 30%;
+    transform: translate(50%, -50%);
+    position: fixed;
+    z-index: 1; 
+}
+
+.Button2:hover {
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(48%, -48%);
+    scale: 104%;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.Button2:active {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(50%, -50%);
+    scale: 100%;
+}
+
+
+
+/* Segundo par */
+
+.Button3 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 1; 
+}
+
+
+.Button3:hover {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(-48%, -48%);
+    scale: 104%;
+    
+}
+
+.Button3:active {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    scale: 100%;
+}
+
+
+/* Segundo par */
+
+.Button4 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    right: 30%;
+    transform: translate(50%, -50%);
+    position: fixed;
+    z-index: 1; 
+}
+
+.Button4:hover {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(48%, -48%);
+    scale: 104%;
+}
+
+.Button4:active {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(50%, -50%);
+    scale: 100%;
+}
+
+
+/* tercer par */
+
+.Button5 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 1; 
+}
+
+
+.Button5:hover {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(-48%, -48%);
+    scale: 104%;
+}
+
+.Button5:active {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    scale: 100%;
+}
+
+
+/* Segundo par */
+
+.Button6 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    right: 30%;
+    transform: translate(50%, -50%);
+    position: fixed;
+    z-index: 1; 
+}
+
+.Button6:hover {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(48%, -48%);
+    scale: 104%;
+}
+
+.Button6:active {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(50%, -50%);
+    scale: 100%;
+}
+
+
+
+
+
+
+.Button7 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    position: fixed;
+    z-index: 1; 
+    
+}
+
+.Button7 {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(48%, -48%);
+    scale: 104%;
+}
+
+.Button7 {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(50%, -50%);
+    scale: 100%;
+}
+
+.Button8 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    position: fixed;
+    z-index: 1; 
+}
+
+.Button8 {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(48%, -48%);
+    scale: 104%;
+}
+
+.Button8 {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(50%, -50%);
+    scale: 100%;
+}
+
+.Button9 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    position: fixed;
+    z-index: 1; 
+}
+
+.Button9 {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(48%, -48%);
+    scale: 104%;
+}
+
+.Button9 {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(50%, -50%);
+    scale: 100%;
+}
+
+.Button10 {
+    align-items: center;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, .2);
+    width: 230px;
+    height: 100px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    position: fixed;
+    z-index: 1; 
+}
+
+.Button10 {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(48%, -48%);
+    scale: 104%;
+}
+
+.Button10 {
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translate(50%, -50%);
+    scale: 100%;
+}

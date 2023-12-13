@@ -1,5 +1,5 @@
-import ChapterOneExperience from "../../components/experiences/chapters/ChapterOneExperience";
-import StartGameC1 from "../../components/experiences/chapters/StartGameC1"
+import ChapterOneExperience from "../../components/experiences/chapters/ChapterOne/ChapterOneExperience";
+import StartGameC1 from "../../components/experiences/chapters/ChapterOne/StartGameC1"
 
 
 
