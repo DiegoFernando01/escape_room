@@ -4,7 +4,7 @@ import Profile from "../../components/profile/Profile";
 import { UserAuth } from "../../context/AuthContext";
 import GameStartMessage from "../../world/staging/StartGame";
 import styles from "./ChapterOne.module.css";
-import StartGameC1 from "../../components/experiences/chapters/StartGameC1";
+import StartGameC1 from "../../components/experiences/chapters/ChapterOne/StartGameC1";
 
 const ChapterOne = () => {
   const { user, logout } = UserAuth();
