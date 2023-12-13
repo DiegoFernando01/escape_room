@@ -1,13 +1,11 @@
-import Login from "./pages/login/Login";
-import SignUp from "./pages/signup/SignUp";
 import ProjectRoutes from "./routes/ProjectRoutes";
+import { AuthContextProvider } from "./context/AuthContext";
+
 const App = () => {
   return (
-    <>
+    <AuthContextProvider>
       <ProjectRoutes />
-      <Login/>
-      <SignUp/>
-    </>
+    </AuthContextProvider>
   );
 };
 
