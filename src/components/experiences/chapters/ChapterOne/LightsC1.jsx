@@ -61,7 +61,7 @@ const LightsC1 = () => {
       return () => {
         clearInterval(interval);
       };
-    }, 33000); // Esperar 33 segundos antes de iniciar
+    }, 25000); // Esperar 33 segundos antes de iniciar
 
     return () => {
       clearTimeout(initialTimeout);

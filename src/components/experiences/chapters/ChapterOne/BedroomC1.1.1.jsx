@@ -8,27 +8,27 @@ const BedroomC2 = () => {
   const cameraRef = useRef();
   const isRotatingCamera = useRef(false);
   const originalRotationY = useRef(4.5);
+  const originalRotationX = useRef(0);
 
   const soundStartFiles = ["/assets/sounds/Chair/wood-creak-start.mp3", "/assets/sounds/Chair/wood-creak-start2.mp3"];
   const soundStartIndex = useRef(0);
 
-  // Agregar referencias para los sonidos de inicio y fin
   const soundStartRef = useRef(new Audio(soundStartFiles[soundStartIndex.current]));
   const soundEndRef = useRef(new Audio("/assets/sounds/Chair/wood-creak-end.mp3"));
 
+  const [opacity, setOpacity] = useState(1);
+
   useEffect(() => {
-    // Configurar la posición y orientación inicial de la cámara.
     camera.position.set(-8, 5, -3.5);
     camera.lookAt(2, 2, 2);
     cameraRef.current = camera;
-    cameraRef.current.rotation.x = 0;
+    cameraRef.current.rotation.x = originalRotationX.current;
     cameraRef.current.rotation.y = originalRotationY.current;
     cameraRef.current.rotation.z = 0;
   }, [camera]);
 
   const handleMouseDown = (e) => {
     if (e.button === 2) {
-      // Clic derecho: Iniciar rotación de la cámara y reproducir sonido de inicio
       isRotatingCamera.current = true;
       soundStartRef.current.play();
     }
@@ -37,47 +37,53 @@ const BedroomC2 = () => {
   const handleMouseMove = (e) => {
     if (isRotatingCamera.current) {
       const deltaX = e.movementX;
-      const rotationSpeed = 0.005; // Ajusta la velocidad de rotación
-      let newRotationY = cameraRef.current.rotation.y - deltaX * rotationSpeed;
+      const deltaY = e.movementY;
+      const rotationSpeed = 0.005;
 
-      // Limitar la rotación a un rango de -80 grados a 80 grados
-      newRotationY = Math.max(Math.min(newRotationY, originalRotationY.current + 1.396), originalRotationY.current - 1.396);
+      let newRotationY = cameraRef.current.rotation.y - deltaX * rotationSpeed;
+      newRotationY = Math.max(
+        Math.min(newRotationY, originalRotationY.current + 1.396),
+        originalRotationY.current - 1.396
+      );
+
+      let newRotationX = cameraRef.current.rotation.x - deltaY * rotationSpeed;
+      const verticalLimit = 0.03;
+      newRotationX = Math.max(
+        Math.min(newRotationX, originalRotationX.current + verticalLimit),
+        originalRotationX.current - verticalLimit
+      );
 
       cameraRef.current.rotation.y = newRotationY;
+      cameraRef.current.rotation.x = newRotationX;
     }
   };
 
   const handleMouseUp = (e) => {
     if (e.button === 2) {
-      // Clic derecho: Detener la rotación de la cámara y reproducir sonido de fin
       isRotatingCamera.current = false;
       soundEndRef.current.play();
 
-      // Cambiar al siguiente archivo de sonido de inicio
       soundStartIndex.current = (soundStartIndex.current + 1) % soundStartFiles.length;
       soundStartRef.current.src = soundStartFiles[soundStartIndex.current];
     }
   };
 
   useEffect(() => {
-    // Utiliza el evento de contexto para evitar el menú contextual del clic derecho.
     gl.domElement.addEventListener("contextmenu", (e) => e.preventDefault());
     gl.domElement.addEventListener("mousedown", handleMouseDown);
     gl.domElement.addEventListener("mousemove", handleMouseMove);
     gl.domElement.addEventListener("mouseup", handleMouseUp);
 
-     // Iniciar la reproducción del sonido después de 6 segundos
-     const soundTimeout = setTimeout(() => {
-      const audio = new Audio("/assets/sounds/Scenes C1/1.2.mp3");
+    const soundTimeout = setTimeout(() => {
+      const audio = new Audio("/assets/sounds/Scenes C1/1.1.1.mp3");
       audio.play();
     }, 1000);
-    
 
-      // Iniciar la reproducción del sonido después de 6 segundos
-      const soundTimeout2 = setTimeout(() => {
-        const audio = new Audio("/assets/sounds/falls.mp3");
-        audio.play();
-      }, 18000);
+     // Iniciar la reproducción del sonido después de 6 segundos
+     const soundTimeout2 = setTimeout(() => {
+      const audio = new Audio("/assets/sounds/BodyFall.mp3");
+      audio.play();
+    }, 15000);
 
 
     return () => {
@@ -85,19 +91,46 @@ const BedroomC2 = () => {
       gl.domElement.removeEventListener("mousedown", handleMouseDown);
       gl.domElement.removeEventListener("mousemove", handleMouseMove);
       gl.domElement.removeEventListener("mouseup", handleMouseUp);
+      clearTimeout(soundTimeout);
     };
   }, [gl.domElement]);
 
+  useEffect(() => {
+    const fadeOutTimeout = setTimeout(() => {
+      let startTime = Date.now();
+      const duration = 7000; // 7 seconds
+      const animate = () => {
+        const currentTime = Date.now();
+        const elapsed = currentTime - startTime;
+        const progress = elapsed / duration;
+        setOpacity(1 - progress);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+
+      animate();
+    }, 5000);
+
+    return () => clearTimeout(fadeOutTimeout);
+  }, []);
+
   return (
     <group>
-      {/* Renderizar el modelo de la habitación dentro de un grupo. */}
       <mesh scale={[2, 2, 2]}>
-        <primitive object={roomModel.scene} />
+        <primitive object={roomModel.scene}>
+          <meshBasicMaterial transparent opacity={opacity} />
+        </primitive>
+      </mesh>
+
+      {/* Plano oscuro frente a la cámara */}
+      <mesh scale={[100, 100, 1]} position={[0, 0, -1]}>
+        <planeGeometry args={[1, 1]} />
+        <meshBasicMaterial color="#000000" transparent opacity={opacity} />
       </mesh>
     </group>
   );
 };
 
 export default BedroomC2;
-
-

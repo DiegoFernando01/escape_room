@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 
-const BedroomC3 = () => {
+const BedroomC2 = () => {
   const roomModel = useGLTF("/assets/models/bedroom/scene.gltf");
   const { camera, gl } = useThree();
   const cameraRef = useRef();
@@ -66,11 +66,18 @@ const BedroomC3 = () => {
     gl.domElement.addEventListener("mousemove", handleMouseMove);
     gl.domElement.addEventListener("mouseup", handleMouseUp);
 
-  // Iniciar la reproducción del sonido después de 6 segundos
-    const soundTimeout = setTimeout(() => {
-      const audio = new Audio("/assets/sounds/Scenes C1/1.3.mp3");
+     // Iniciar la reproducción del sonido después de 6 segundos
+     const soundTimeout = setTimeout(() => {
+      const audio = new Audio("/assets/sounds/Scenes C1/1.1.mp3");
       audio.play();
-    }, 2);
+    }, 1000);
+    
+
+      // Iniciar la reproducción del sonido después de 6 segundos
+      const soundTimeout2 = setTimeout(() => {
+        const audio = new Audio("/assets/sounds/falls.mp3");
+        audio.play();
+      }, 18000);
 
 
     return () => {
@@ -91,5 +98,6 @@ const BedroomC3 = () => {
   );
 };
 
-export default BedroomC3;
+export default BedroomC2;
+
 

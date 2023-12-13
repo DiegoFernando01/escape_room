@@ -1,21 +1,64 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 
 const Library = (props) => {
-    const { nodes, materials } = useGLTF("/assets/models/library/library.glb");
-    return (
-        <group {...props} dispose={null}>
-            <group rotation={[-Math.PI / 2, 0, 0]} scale={2.8}>
-                <group rotation={[Math.PI / 2, 0, 0]}>
-                <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Object_4.geometry}
-                    material={materials.Ladder}
-                    position={[-0.254, 2.499, -0.199]}
-                    rotation={[Math.PI / 2, 0, 0]}
-                    scale={[0.775, 1.246, 0.775]}
-                />
+  const { nodes, materials } = useGLTF("/assets/models/library/library.glb");
+  const libraryRef = useRef();
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleLibraryClick = () => {
+    console.log("Librero clickeado");
+    playAudio("/assets/sounds/Scenes C2/C2_3.mp3");
+  };
+
+  const handleMouseOver = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovered(false);
+  };
+
+  const playAudio = (audioSrc) => {
+    const audio = new Audio(audioSrc);
+    audio.play();
+  };
+
+  useEffect(() => {
+    const libraryObject = libraryRef.current;
+    if (libraryObject) {
+      libraryObject.children.forEach((child) => {
+        if (child.isMesh) {
+          child.material.emissiveIntensity = isHovered ? 5 : 0;
+        }
+      });
+    }
+  }, [isHovered]);
+
+  return (
+    <group {...props} dispose={null}>
+      <group
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={2.8}
+        onPointerOver={handleMouseOver}
+        onPointerOut={handleMouseOut}
+        onClick={handleLibraryClick}
+      >
+        <group rotation={[Math.PI / 2, 0, 0]}>
+          {nodes.Object_4 && (
+            <mesh
+              ref={libraryRef}
+              onClick={handleLibraryClick}
+              visible={false}
+              castShadow
+              receiveShadow
+              geometry={nodes.Object_4.geometry}
+              material={materials.Ladder}
+              position={[-0.254, 2.499, -0.199]}
+              rotation={[Math.PI / 2, 0, 0]}
+              scale={[0.775, 1.246, 0.775]}
+            />
+          )}
                 <mesh
                     castShadow
                     receiveShadow
@@ -33,6 +76,7 @@ const Library = (props) => {
                     rotation={[0.253, 0, 0]}
                     scale={[0.136, 0.108, 1.22]}
                 />
+                <planeGeometry args={[5000]}/>
                 <mesh
                     castShadow
                     receiveShadow
