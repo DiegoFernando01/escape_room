@@ -1,8 +1,9 @@
 # La muerte de Wiliam
-<img width='200' heigth='225' src='/public/assets/images/La muerte de William.png'>
+<img src='/public/assets/images/La muerte de William.png'>
 <p>
 Accede a la muerte de William: <a href="https://escape-room-vert.vercel.app" target="_blank">Link del juego</a>
-<b>Descrubre el misterio que envuelve a William en esta trama<b>
+  
+<b>Descrubre el misterio que envuelve a William en esta trama</b>
 
 ¡Bienvenido a "La Muerte de William" Novela interactiva!
 
@@ -10,10 +11,10 @@ Sumérgete en una experiencia única con nuestro emocionante juego de novela vis
 
 ¿Estás listo para desentrañar los secretos de "La Muerte de William"?
 
-Descubre un mundo lleno de misterio, suspense y giros inesperados mientras interactúas con impresionantes espacios en 3D que te sumergirán por completo en la trama. Nuestra plataforma te ofrece una experiencia envolvente, con gráficos de alta calidad, diálogos cautivadores y decisiones impactantes que te mantendrán en vilo.
-
-Explora cada rincón de nuestro juego interactivo, donde la narrativa se entrelaza con tus elecciones, ofreciéndote una experiencia de juego completamente inmersiva. ¿Estás listo para desentrañar los secretos de "La Muerte de William"? ¡Únete a nosotros y descubre un nuevo nivel de entretenimiento interactivo!
 </p>
+
+<hr>
+
 
 
 <p align='center'>
