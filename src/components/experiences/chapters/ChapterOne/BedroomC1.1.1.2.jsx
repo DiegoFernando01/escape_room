@@ -80,40 +80,17 @@ const BedroomC2 = () => {
 
      // Iniciar la reproducción del sonido después de 6 segundos
      const soundTimeout = setTimeout(() => {
-      const audio = new Audio("/assets/sounds/Scenes C1/1.4.mp3");
+      const audio = new Audio("/assets/sounds/Scenes C1/1.1.1.2.mp3");
       audio.play();
     }, 1000);
     
 
       // Iniciar la reproducción del sonido después de 6 segundos
       const soundTimeout2 = setTimeout(() => {
-        const audio = new Audio("/assets/sounds/hum.mp3");
+        const audio = new Audio("/assets/sounds/Scenes C1/sound-background.mp3");
         audio.play();
-      }, 11000);
+      }, 38000);
 
-      // Iniciar la reproducción del sonido después de 6 segundos
-      const soundTimeout3 = setTimeout(() => {
-        const audio = new Audio("/assets/sounds/ahem.mp3");
-        audio.play();
-      }, 20000);
-
-      // Iniciar la reproducción del sonido después de 6 segundos
-      const soundTimeout4 = setTimeout(() => {
-        const audio = new Audio("/assets/sounds/hum.mp3");
-        audio.play();
-      }, 25000);
-
-      // Iniciar la reproducción del sonido después de 6 segundos
-      const soundTimeout5 = setTimeout(() => {
-        const audio = new Audio("/assets/sounds/hum.mp3");
-        audio.play();
-      }, 30000);
-
-      // Iniciar la reproducción del sonido después de 6 segundos
-      const soundTimeout6 = setTimeout(() => {
-        const audio = new Audio("/assets/sounds/hum.mp3");
-        audio.play();
-      }, 55000);
 
     return () => {
       gl.domElement.removeEventListener("contextmenu", (e) => e.preventDefault());
