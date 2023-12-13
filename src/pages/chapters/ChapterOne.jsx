@@ -1,4 +1,4 @@
-import ChapterOneExperience from "../../components/experiences/chapters/ChapterOneExperience";
+import ChapterOneExperience from "../../components/experiences/chapters/ChapterOne/ChapterOneExperience";
 import { Canvas } from "@react-three/fiber";
 import Profile from "../../components/profile/Profile";
 import { UserAuth } from "../../context/AuthContext";
